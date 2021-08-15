@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <style>
+
+    </style>
+    <h1 id>{{ post.title }}</h1> <img src="{{ post.image.url }}"
+                                      class="flex-shrink-0 me-3 mt-2 mb-3 rounded-circle"
+                                      style="width:100px;height:100px;">
+
+    <form method="POST" action="{% url "deletepost" post.pk %}" onsubmit="return confirm('Are you sure ?');">
+        {% csrf_token %}
+        <h5>By {{ post.author }}</h5> <small>Written on {{ post.date }}</small><br>
+        {% if user.is_authenticated %}
+            {% if post.author.id == user.id %}
+                <input class="btn btn-primary mt-3" type="button"
+                       onclick="location.href='{% url 'updatepost' post.pk %}'" value="Edit"/>
+                <button type="submit" class="btn btn-danger mt-3">Delete</button>
+            {% endif %}
+        {% endif %}
+    </form>
+    <br>
+    <p>{% lorem 5 random %}</p>
+    <br><br>
+    <h3>Comments Section</h3><br>
+<h5><a href="{% url 'addcomment' post.pk %}">Add Comment</a></h5><br>
+    {% if not post.comments.all %}
+        <small>No comments yet ...</small>
+    {% else %}
+        {% for cmt in post.comments.all %}
+            <strong>{{ cmt.name }}</strong> - <small>{{ cmt.date_added }}</small>
+            <br>
+           <p style="font-size: 18px">{{ cmt.body }}</p>
+            <br><br>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

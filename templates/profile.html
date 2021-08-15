@@ -1,0 +1,17 @@
+{%  extends 'base.html' %}
+{% block title %}Profile Management{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h1>Hello {{ user.username }}</h1>
+    <img src="{{ user.profile.avatar.url }}" class="flex-shrink-0 mt-2 mb-3 rounded-circle" style="width: 200px ;height:200px"><br>
+    <h4>Bio: {{ user.profile.bio }}</h4><br>
+    <h4>Email: {{ user.email }}</h4><br>
+    <h4>Last login: {{ user.last_login }}</h4><br>
+
+    <a href="{{ user.profile.media_url }}" style="font-size: 20px">Link to my facebook</a><br>
+    <a type="submit" class="btn btn-primary mt-4" href="{%  url 'edit_profile' %}">Edit Profile</a>
+</div>
+
+{% endblock %}

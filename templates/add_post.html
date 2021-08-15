@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+
+         <form method="post" enctype="multipart/form-data">
+             <table>
+            {%  csrf_token %}
+            {{ form.as_table }}
+                 </table>
+             <input type="button" class="btn btn-danger mt-3" value="Cancel"
+                           onclick="location.href='/'"/>
+            <button type="submit" class="btn btn-primary mt-3">Add Blog</button>
+
+        </form>
+    </div>
+{% endblock %}

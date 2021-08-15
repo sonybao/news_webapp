@@ -1,0 +1,13 @@
+{%  extends 'base.html' %}
+{% block title %}Profile Management{% endblock %}
+
+{% block content %}
+    <form method="post">
+    {%  csrf_token %}
+    {{ form.as_p }}
+        <strong><a href="{% url 'changepass' %}">Click here to change password </a></strong><br>
+        <input type="button" class="btn btn-danger mr-1 mt-3" value="Cancel"
+                           onclick="location.href='{% url 'profile' %}'"/>
+    <button type="submit" class="btn btn-primary mt-3" onclick="return alert('Ok')">Update</button>
+</form>
+{% endblock %}
