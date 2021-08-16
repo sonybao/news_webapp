@@ -25,6 +25,9 @@
     <p>{% lorem 5 random %}</p>
     <br><br>
     <h3>Comments Section</h3><br>
+    <form method="post">
+    {{ cmt_form.as_p }}
+    </form>
 <h5><a href="{% url 'addcomment' post.pk %}">Add Comment</a></h5><br>
     {% if not post.comments.all %}
         <small>No comments yet ...</small>

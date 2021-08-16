@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE,related_name='profile')
     bio = models.TextField()
-    avatar = models.ImageField(null=True, blank=True, upload_to="profiles.images/")
+    avatar = models.ImageField(null=True, blank=True,default="profiles.images/default_ava.png", upload_to="profiles.images/")
     media_url = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):

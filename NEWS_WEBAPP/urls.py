@@ -32,7 +32,8 @@ urlpatterns = [
                   path('register/', profiles_views.RegisterSite.as_view(), name='register'),
                   path('login/', profiles_views.LoginSite.as_view(), name='login'),
                   path('profile/', profiles_views.ProfileSite.as_view(), name='profile'),
-                  path('edit_profile/', profiles_views.EditProfile.as_view(), name='edit_profile'),
+                  path('edit_profile/', profiles_views.update_profile, name='edit_profile'),
+
                 path('password/', profiles_views.PasswordChange.as_view(), name='changepass'),
                   path('logout/', profiles_views.LogoutSite.as_view(), name='logout'),
 

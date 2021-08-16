@@ -1,8 +1,10 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
+from NEWS_WEBAPP.forms import CommentForm
 from blogs.models import Post, Comment
 
 
@@ -23,7 +25,23 @@ class DetailPost(DetailView):
     template_name = 'detail_post.html'
 
 
-class AddPost(CreateView):
+# def add_comment(request, pk):
+#     if request.method == 'POST':
+#         cmt_form = CommentForm(request.POST, instance=request.post.comments)
+#         if cmt_form.is_valid():
+#             cmt_form.save()
+#             messages.success(request, 'Comment Added')
+#             return redirect('detailpost')
+#         else:
+#             messages.error(request, 'Please correct the error below.')
+#     else:
+#         cmt_form = CommentForm(instance=request.post.comments)
+#     return render(request, 'detail_post.html', {
+#         'cmt_form': cmt_form,
+#     })
+
+
+class AddPost(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'add_post.html'
     fields = ('title', 'description', 'image')
@@ -34,7 +52,7 @@ class AddPost(CreateView):
         return super().form_valid(form)
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin,UpdateView):
     model = Post
     template_name = 'update_post.html'
     fields = ('title', 'description', 'image')
@@ -59,4 +77,3 @@ class AddCommentPost(CreateView):
     def get_success_url(self):
         postid = self.kwargs['pk']
         return reverse_lazy('detailpost', kwargs={'pk': postid})
-

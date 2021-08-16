@@ -7,11 +7,16 @@
     <h1>Hello {{ user.username }}</h1>
     <img src="{{ user.profile.avatar.url }}" class="flex-shrink-0 mt-2 mb-3 rounded-circle" style="width: 200px ;height:200px"><br>
     <h4>Bio: {{ user.profile.bio }}</h4><br>
+    <h4>Fullname: {{ user.first_name }} {{ user.last_name }}</h4><br>
     <h4>Email: {{ user.email }}</h4><br>
+    <h4>Date joined: {{ user.date_joined }}</h4><br>
     <h4>Last login: {{ user.last_login }}</h4><br>
 
     <a href="{{ user.profile.media_url }}" style="font-size: 20px">Link to my facebook</a><br>
-    <a type="submit" class="btn btn-primary mt-4" href="{%  url 'edit_profile' %}">Edit Profile</a>
+    <a class="btn btn-success mt-4" href="{%  url 'home' %}">Home</a>
+    <a class="btn btn-info mt-4 mx-2" href="{%  url 'edit_profile' %}">Edit Profile</a>
+    <a class="btn btn-danger mt-4" href="{%  url 'logout' %}">Logout</a>
+
 </div>
 
 {% endblock %}
