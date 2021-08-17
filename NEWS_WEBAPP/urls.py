@@ -26,15 +26,13 @@ urlpatterns = [
                   path('detailpost/edit/<int:pk>', blogs.views.UpdatePost.as_view(), name='updatepost'),
                   path('detailpost/<int:pk>', blogs.views.DetailPost.as_view(), name='detailpost'),
                   path('detailpost/<int:pk>/delete', blogs.views.DeletePost.as_view(), name='deletepost'),
-
                   path('detailpost/<int:pk>/comment', blogs.views.AddCommentPost.as_view(), name='addcomment'),
 
-                  path('register/', profiles_views.RegisterSite.as_view(), name='register'),
-                  path('login/', profiles_views.LoginSite.as_view(), name='login'),
+                  path('login/', profiles_views.login_register, name='login'),
                   path('profile/', profiles_views.ProfileSite.as_view(), name='profile'),
                   path('edit_profile/', profiles_views.update_profile, name='edit_profile'),
 
-                path('password/', profiles_views.PasswordChange.as_view(), name='changepass'),
+                  path('password/', profiles_views.PasswordChange.as_view(), name='changepass'),
                   path('logout/', profiles_views.LogoutSite.as_view(), name='logout'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

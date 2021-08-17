@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'profiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'phonenumber_field',
+
 
 ]
 

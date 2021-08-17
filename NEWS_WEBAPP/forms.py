@@ -1,23 +1,41 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UsernameField, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UsernameField, UserChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
+from phonenumber_field.formfields import PhoneNumberField
 
 from blogs.models import Post, Comment
 from profiles.models import Profile
 
 
 class CustomRegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+    username = forms.CharField(label='Username', max_length=100,
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(label='First Name', max_length=100,
+                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label='Last Name', max_length=100,
+                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ("username", "email")
+        fields = ("username", "email",'first_name','last_name','password1', 'password2')
         field_classes = {'username': UsernameField}
         help_texts = {
             'username': None,
             'password2': None,
         }
+
+
+class CustomLoginForm(AuthenticationForm):
+    username = forms.CharField(label='Username', max_length=100,
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')
 
 
 class CustomEditProfileForm(forms.ModelForm):
@@ -28,15 +46,17 @@ class CustomEditProfileForm(forms.ModelForm):
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(label='Last Name', max_length=100,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name')
 
 
 class ProfileForm(forms.ModelForm):
-    bio = forms.CharField(label='Bio', widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}))
+    bio = forms.CharField(label='Bio', required=False,
+                          widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}))
     avatar = forms.ImageField(label='Profile Photo')
-    media_url = forms.CharField(label='Media URL', max_length=300,
+    media_url = forms.CharField(label='Media URL', max_length=300, required=False,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
