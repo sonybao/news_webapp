@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
 
-<html lang="en">
-{% load static %}
-<script>
+  {% load static %}
+  <script>
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
 
@@ -11,82 +11,127 @@
     })
 </script>
 <head>
-    <meta charset="UTF-8">
-    {% block header %}
+  {% block header %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-              crossorigin="anonymous"/>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-                crossorigin="anonymous"></script>
-    {% endblock %}
-    <title>{% block title %}Welcome Home{% endblock %}</title>
 
+  <link href=" {% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'prettyPhoto/prettyPhoto.css' %}" type="text/css">
+  <link href="{% static 'css1/owl.transitions.css' %}" rel="stylesheet">
+  <link href="{% static 'css1/owl.carousel.css' %}" rel="stylesheet">
+  <link href="{% static 'css1/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css1/responsive.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% endblock %}
+  <title>{% block title %}Welcome Home{% endblock %}</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">SNB2909</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Trang chủ</a>
-                </li>
-                <li class="nav-item">
 
-                    <a class="nav-link" href="#">Liên hệ</a>
 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">Giới Thiệu</a>
-                </li>
-            </ul>
-            {% if user.is_authenticated %}
-                <form class="d-flex mx-1">
-                    {% if user.is_superuser %}
-                        <input type="button" class="btn btn-outline-warning" value="Admin"
-                               onclick="location.href='/admin/'"/>
-                    {% else %} {% endif %}
-                    <input type="button" class="btn btn-outline-success mx-2" value="Add Post"
-                           onclick="location.href='{% url 'addpost' %}'"/>
-                    <input type="button" class="btn btn-outline-info" value="Profile"
-                           onclick="location.href='{% url 'profile' %}'"/>
-                    <input type="button" class="btn btn-outline-danger mx-2" value="Logout"
-                           onclick="location.href='{% url 'logout' %}'"/>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                    </input>
-                </form>
-            {% else %}
-                <form class="d-flex mx-1">
-                    <!-- Example single danger button -->
-                    {#                    <div class="btn-group mx-2">#}
-                    {#                        <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown"#}
-                    {#                                aria-expanded="false">#}
-                    {#                            Action#}
-                    {#                        </button>#}
-                    {#                        <ul class="dropdown-menu">#}
-                    {#                            {{ form }}#}
-                    {#                                <hr class="dropdown-divider">#}
-                    {#                            </li>#}
-                    {#                            <li><a class="dropdown-item" href="#">Separated link</a></li>#}
-                    {#                        </ul>#}
-                    {#                    </div>#}
-                    <input type="button" class="btn btn-outline-primary mx-2" value="Login"
-                           onclick="location.href='{% url 'login' %}'">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            {% endif %}
-        </div>
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1">
+
+  <!--=========================nav========================-->
+
+
+  <section class="top_header" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><a href="/"><img src="{% static 'images/logo.png' %}" class="img-responsive"></a></div>
+
+        <div class="col-md-4"></div>
+
+      </div>
     </div>
-</nav>
-<div class="message">
+
+  </section>
+
+  <div class="nav_header">
+    <nav class="navbar navbar-default" id="Home">
+      <div class="container-fluid">
+        <div class="col-md-2 hiden_responsive">
+
+          <div class="social hiden_responsive">
+            <i class="open fa fa-share-alt"></i>
+            <ul>
+              <li><a href="#"><i class="icon fa fa-facebook-square"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+              <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube-square"></i></a></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-10">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="row">
+            <div class="navbar-header col-md-12">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle
+                  navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                  class="icon-bar"></span> </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <ul class="nav navbar-nav navbar-left">
+                      <li><a href="/" class="padd_0">Home</a></li>
+                      <li><a href="#">Liên hệ</a></li>
+                      <li><a href="{% url 'about' %}">Giới Thiệu</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-2">
+                    <form action="" method="" class="hiden_responsive search">
+                      <input type="text" name="" value="" class="search-field" required>
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    
+                  </div>
+                  <!-- <div class="col-sm-1 buttonlogin">
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                          LOGIN
+                        </button></li>
+                      </ul>
+                  </div> -->
+                  {% if user.is_authenticated %}
+                  <div class="d-flex mx-1">
+                      
+                     
+                      <input type="button" class="btn btn-outline-danger mx-2" value="Logout"
+                             onclick="location.href=`{% url 'logout' %}`"/>
+                    
+                     
+                  </div>
+              {% else %}
+                  <div class="col-sm-1 buttonlogin">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><button type="button" onclick="location.href=`{% url 'login' %}`">
+                        LOGIN
+                      </button></li>
+                    </ul>
+                  </div>
+              {% endif %}
+
+                </div>
+
+              </div>
+              <!-- /.navbar-collapse -->
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </nav>
+  </div>
+
+  <!--=========================nav end ========================-->
+  <div class="message">
     {% for message in messages %}
         <div class="alert alert-success text-center" role="alert"  {% if message.tags %}
              class=" {{ message.tags }} " {% endif %}><h5>{{ message }}</h5></div>
@@ -97,5 +142,17 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+            crossorigin="anonymous"></script>
+  <script src="{% static 'js1/jquery.min.js' %}"></script>
+  <script src="{% static 'prettyPhoto/jquery.prettyPhoto.js' %}"></script>
+  <script src="{% static 'js1/main-script.min.js' %}"></script>
+  <script src="{% static 'js1/index.js' %}"></script>
+  <div class="none">
+    <div class="copytext">Design By <a href="http://html5load.com/" target="_blank"
+        class="copylink">html5load.Com</a></div>
+  </div>
 </body>
+
 </html>

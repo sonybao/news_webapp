@@ -1,0 +1,81 @@
+@media only screen and (max-width: 1200px) {
+	
+
+
+
+
+	}
+	
+	
+	
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+
+
+
+.hiden_responsive{display:none;}
+
+
+
+}
+
+
+
+/* Mobile Layout: 320px. */
+
+@media only screen and (max-width: 767px) {
+
+
+.hiden_responsive{display:none;}
+
+
+}
+
+
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+
+
+.hiden_responsive{display:none;}
+.collapse{
+    visibility:  visible !important;
+}
+.Profilemenu1{
+    display: none !important;
+}
+.prohiden{
+    display: block !important;
+	height: 30px;
+}
+.prohiden1{
+	margin-top: 20px;
+}
+.prohiden button{
+    margin: 0px 0px 10px 13px  !important;
+	
+}
+
+.buttonlogin button{
+   
+	float: left;
+	margin: 0px;
+	margin-left: 15px;
+}
+.buttonlogin {
+   
+	height: 45px;
+	
+}
+
+
+}
+
+
