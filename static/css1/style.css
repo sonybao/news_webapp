@@ -458,11 +458,15 @@ width:100%; background:none; border:1px #000000 solid; text-align:center; transi
 .footer{
 	padding:50px 0px;
 	background:#333;
-	
-	}
-.footer,.footer a{color:#FFF; font-size:12px; line-height:80px;}
-.footer,.footer a img{margin:0 auto;}
-
+    margin-top: 50px !important;
+}
+.footer,
+.footer a{
+    color:#FFF; font-size:12px; line-height:80px;
+}
+.footer,.footer a img{
+    margin:0 auto;
+}
 h4 a{
  font-family:'Roboto', sans-serif;
 	display:block !important;
@@ -491,7 +495,11 @@ h4 a{
     height: 41px;
 }
 .modal-body {
-    padding: 0px 30px;
+    padding: 25px 25px 15px 25px;
+}
+.modal-footer {
+    border: none;
+    padding: 0px 25px 25px 0px;
 }
 .modal-dialog {
     width: 400px;
@@ -631,9 +639,7 @@ h4 a{
 .none{
     display: none !important;
 }
-.maincreate{
-    margin: 20px 0px;
-}
+
 .centerllogin{
     width: 350px;
     margin: 30px auto;
@@ -642,7 +648,6 @@ h4 a{
 }
 .centerllogin .headerlogin{
     font-size: 28px;
-    font-weight: bold;
     color: #000;
     padding: 10px 0 10px 25px;
     background: #FCD665;
@@ -666,15 +671,8 @@ h4 a{
     font-size: 18px;
     outline: none;
 }
-
-.centerllogin form i{
-    position: absolute;
-    font-size: 25px;
-    color: grey;
-    margin: 15px 0 0 -45px;
-}
 .centerllogin form input[type="submit"]{
-
+    border: none;
     width: 120px;
     height: 45px;
     color: #000;
@@ -684,14 +682,124 @@ h4 a{
     background: #FCD665;
 }
 .centerllogin form input[type="submit"]:hover{
-    background: #8f7a3c;
+    background: #b69c50;
+    transition: .5s;
+}
+.modal-footer input[type="submit"]{
+    border: none;
+    width: 140px;
+    height: 45px;
+    color: #000;
+    cursor: pointer;
+    line-height: 45px;
+    border-radius: 5px;
+    background: #FCD665;
+}
+.modal-footer input[type="submit"]:hover{
+    background: #b69c50;
     transition: .5s;
 }
 .centerllogin form button{
     border: none;
     background: none;
     text-decoration: none;
+    float: right;
+    line-height: 45px;
     font-size: 15px;
     color: #2f9ad8;
    
+}
+.createfrom{
+    border: none;
+    border-radius: 10px ;
+}
+.modal-header {
+    background: #FCD665;
+    min-height: 16.43px;
+    
+    padding: 10px 10px 10px 25px;
+    border: none;
+    
+}
+.modal-body input{
+    margin-bottom: 10px;
+}
+.modal-title{
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+.close{
+    line-height: 32px;
+    margin-right: 10px;
+}
+.modal-title button{
+    color: #000;
+    
+}
+.mainnew{
+   min-height: 90vh;
+}
+.mainprofile{
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.mainprofile-left{
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.mainprofile-left p{
+    font-size: 17px;
+   color: #5e5e5e;
+}
+.mainprofile-left img{
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border: 1px solid #afafaf;
+}
+.mainprofile-right{
+    height: 100%;
+    float: left;
+    padding-left: 50px; 
+}
+.mainprofile-right a{
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.form-control1{
+    border-left: 5px double #b69c50;
+    padding-left: 20px;
+}
+.form-control2{
+    height: 120px;
+    overflow: auto;
+}
+.mainprofile-right > .form-group{
+    margin-bottom: 20px;
+}
+.img-responsive1{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 10px;
+}
+.alert {
+    positition: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+    transition: visibility 0s, opacity 250ms, transform 250ms;
+}
+.alert.hide {
+    positition: relative;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: visibility 0s 250ms, opacity 250ms, transform 250ms;
 }
