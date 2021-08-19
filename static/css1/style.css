@@ -608,13 +608,16 @@ h4 a{
 }
 .Profilemenu ul li{
     border-bottom: 1px solid rgb(187, 187, 187);
+    padding: 6px;
 }
 .Profilemenu1{
      display: block !important;
 }
 
 .Profilemenu ul li a{
-    color: #000;   
+    color: #000; 
+    font-size: 14px;
+    font-weight: bold; 
 }
 .Profilemenu ul li a:hover{
     color: #999999;   
@@ -627,4 +630,68 @@ h4 a{
 }
 .none{
     display: none !important;
+}
+.maincreate{
+    margin: 20px 0px;
+}
+.centerllogin{
+    width: 350px;
+    margin: 30px auto;
+    position: relative;
+    
+}
+.centerllogin .headerlogin{
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    padding: 10px 0 10px 25px;
+    background: #FCD665;
+    border-radius: 10px 10px 0 0;
+}
+.centerllogin form{
+    position: absolute;
+    background: white;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 0 0 10px 10px;
+}
+.centerllogin form input{
+    height: 50px;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    border: 1px solid silver;
+    font-size: 18px;
+    outline: none;
+}
+
+.centerllogin form i{
+    position: absolute;
+    font-size: 25px;
+    color: grey;
+    margin: 15px 0 0 -45px;
+}
+.centerllogin form input[type="submit"]{
+
+    width: 120px;
+    height: 45px;
+    color: #000;
+    cursor: pointer;
+    line-height: 45px;
+    border-radius: 5px;
+    background: #FCD665;
+}
+.centerllogin form input[type="submit"]:hover{
+    background: #8f7a3c;
+    transition: .5s;
+}
+.centerllogin form button{
+    border: none;
+    background: none;
+    text-decoration: none;
+    font-size: 15px;
+    color: #2f9ad8;
+   
 }

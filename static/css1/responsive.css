@@ -30,7 +30,6 @@
 @media only screen and (max-width: 767px) {
 
 
-.hiden_responsive{display:none;}
 
 
 }
@@ -56,7 +55,7 @@
 	height: 30px;
 }
 .prohiden1{
-	margin-top: 20px;
+	margin-top: 19px;
 }
 .prohiden button{
     margin: 0px 0px 10px 13px  !important;
