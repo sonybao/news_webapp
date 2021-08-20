@@ -6,11 +6,28 @@
     <style>
 
     </style>
+<div>
+
+    {% for postabout in object_list_about  %}
+    <div class="d-flex border p-3 mb-3">
+        <img src="{{ postabout.image.url }}"
+             class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
+        <div>
+            <h3><a href="{% url 'detailpost' postabout.pk %}" style="text-decoration: none" id="Title">{{ postabout.title }}</a></h3>
+            <p>Lượt xem: {{ post.views }}</p>
+            <h6><a href="{% url 'detailpost' postabout.pk %}" style="text-decoration: none">{{ postabout.author }}</a><small> - {{ postabout.date }}</small></h6>
+            <p>{% lorem 1 p random %}</p>
+        </div>
+    </div>
+        {% endfor %}
+</div>
+    
+
     <h1 id>{{ post.title }}</h1> <img src="{{ post.image.url }}"
                                       class="flex-shrink-0 me-3 mt-2 mb-3 rounded-circle"
                                       style="width:100px;height:100px;">
 
-    <form method="POST" action="{% url "deletepost" post.pk %}" onsubmit="return confirm('Are you sure ?');">
+    <form method="POST" action="{% url 'deletepost' post.pk %}" onsubmit="return confirm('Are you sure ?');">
         {% csrf_token %}
         <h5>By {{ post.author }}</h5> <small>Written on {{ post.date }}</small><br>
         {% if user.is_authenticated %}

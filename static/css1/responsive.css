@@ -21,13 +21,13 @@
 
 
 
-
+}
 /* Mobile Layout: 320px. */
 
 @media only screen and (max-width: 767px) {
 
 
-
+	.hiden_responsive{display:none;}
 
 }
 
