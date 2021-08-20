@@ -22,6 +22,14 @@
 .tennhom a{
 	text-align: center;
 }
+.baiviet1 img{
+	margin: auto;
+	max-height:none;
+}
+.baiviet2{
+    height: 95px !important;
+    overflow: hidden;
+}
 
 
 
@@ -37,7 +45,14 @@
 		height: 100%;
 		object-fit: contain;
 	}
-
+	.baiviet1 img{
+		margin: auto;
+		max-height:none;
+	}
+	.baiviet2{
+		height: 95px !important;
+		overflow: hidden;
+	}
 }
 
 

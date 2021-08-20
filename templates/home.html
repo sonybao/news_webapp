@@ -72,9 +72,9 @@
                 </span>
             </div>
             <div class="col-md-12 ">
-                <h4><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h4>
+                <h4 ><a href="{% url 'detailpost' post.pk %}" style="font-size: 20px;">{{ post.title }}</a></h4>
                 <div class="baiviet">
-                  <p>{{ post.description }}</p>
+                  <p style="text-align:justify">{{ post.description }}</p>
                 </div>
                 
   
@@ -118,8 +118,8 @@
         
                     </div>
                 </div>
-                <h4><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h4>
-                <div class="baiviet2"><p>{{ post.description }}</p></div>
+                <h4><a href="{% url 'detailpost' post.pk %}" style="font-size: 15px;">{{ post.title }}</a></h4>
+                <div class="baiviet2"><p style="text-align:justify">{{ post.description }}</p></div>
                 
         
         
@@ -242,15 +242,14 @@
               <h5>ABOUT NEWSTODAY</h5>
             </div>
 
-              {% for post in object_list  %}
-                {% if post.id == 12 %}
+              {% for post in object_list|slice:":1"  %}
+               
                   <div class="col-md-12 mb30">
                     <img src="{{ post.image.url }}" class="img-responsive">
                   </div>
-                  <div class="col-md-12 mb30">
-                    <p>{{ post.description }}</p>
+                  <div class="col-md-12 mb30 baiviet2">
+                    <p style="text-align:justify">{{ post.description }}</p>
                   </div>
-                {% endif %}
               {% endfor %}
             
           </div>
@@ -271,67 +270,5 @@
 
 
 
-<!-- 
 
-    {% for post in object_list|slice:":2"  %}
-<div class="d-flex border p-3 mb-3">
-    <img src="{{ post.image.url }}"
-         class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
-
-    <div>
-        <h3><a href="{% url 'detailpost' post.pk %}" style="text-decoration: none" id="Title">{{ post.title }}</a></h3>
-        <p>Lượt xem: {{ post.views }}</p>
-        <h6><a href="{% url 'profile' %}" style="text-decoration: none">{{ post.author }}</a><small> - {{ post.date }}</small></h6>
-        <p>{% lorem 1 p random %}</p>
-    </div>
-</div>
-    {% endfor %}
-    <hr>
-    <hr>
-    {% for post in object_list  %}
-<div class="d-flex border p-3 mb-3">
-    <img src="{{ post.image.url }}"
-         class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
-
-    <div>
-        <h3><a href="{% url 'detailpost' post.pk %}" style="text-decoration: none" id="Title">{{ post.title }}</a></h3>
-        <p>Lượt xem: {{ post.views }}</p>
-        <h6><a href="{% url 'profile' %}" style="text-decoration: none">{{ post.author }}</a><small> - {{ post.date }}</small></h6>
-        <p>{% lorem 1 p random %}</p>
-    </div>
-</div>
-    {% endfor %}
-<hr>
-<hr>
-{% for post in object_list %}
-{% if forloop.last %}
-<strong>
-    <div class="d-flex border p-3 mb-3">
-        <img src="{{ post.image.url }}" class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
-
-        <div>
-            <h3><a href="{% url 'detailpost' post.pk %}" style="text-decoration: none" id="Title">{{ post.title }}</a>
-            </h3>
-            <p>Lượt xem: {{ post.views }}</p>
-            <h6><a href="{% url 'profile' %}" style="text-decoration: none">{{ post.author }}</a><small> - {{ post.date}}</small></h6>
-            <p>{% lorem 1 p random %}</p>
-        </div>
-    </div>
-</strong>
-{%  else  %}
-<small>
-    <div class="d-flex border p-3 mb-3">
-        <img src="{{ post.image.url }}" class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
-
-        <div>
-            <h3><a href="{% url 'detailpost' post.pk %}" style="text-decoration: none" id="Title">{{ post.title }}</a>
-            </h3>
-            <p>Lượt xem: {{ post.views }}</p>
-            <h6><a href="{% url 'profile' %}" style="text-decoration: none">{{ post.author }}</a><small> - {{ post.date}}</small></h6>
-            <p>{% lorem 1 p random %}</p>
-        </div>
-    </div>
-</small>
-{% endif %}
-{% endfor %} -->
 {% endblock %}

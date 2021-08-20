@@ -790,27 +790,28 @@ h4 a{
     border-radius: 10px;
 }
 .alert {
-    positition: relative;
+    position: relative;
     opacity: 1;
     visibility: visible;
     transform: translateX(0px);
     transition: visibility 0s, opacity 250ms, transform 250ms;
 }
 .alert.hide {
-    positition: relative;
+    position: relative;
     opacity: 0;
     visibility: hidden;
     transform: translateX(-10px);
     transition: visibility 0s 250ms, opacity 250ms, transform 250ms;
 }
 .baiviet {
-    height: 256px !important;
+    height: 164px !important;
     overflow: hidden;
 }
 .baiviet1 img{
-	margin: auto;
-	
-}
+    width: 100%;
+    max-height: 500px;
+ }
+
 .baiviet2{
     height: 300px !important;
     overflow: hidden;

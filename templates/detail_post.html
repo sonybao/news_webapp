@@ -22,8 +22,9 @@
         {% endfor %}
 </div>
     
-
-    <h1 id>{{ post.title }}</h1> <img src="{{ post.image.url }}"
+<!-- 
+    <h1 id>{{ post.title }}</h1> 
+    <img src="{{ post.image.url }}"
                                       class="flex-shrink-0 me-3 mt-2 mb-3 rounded-circle"
                                       style="width:100px;height:100px;">
 
@@ -33,7 +34,7 @@
         {% if user.is_authenticated %}
             {% if post.author.id == user.id %}
                 <input class="btn btn-primary mt-3" type="button"
-                       onclick="location.href='{% url 'updatepost' post.pk %}'" value="Edit"/>
+                       onclick="location.href=`{% url 'updatepost' post.pk %}`" value="Edit"/>
                 <button type="submit" class="btn btn-danger mt-3">Delete</button>
             {% endif %}
         {% endif %}
@@ -45,7 +46,7 @@
     <form method="post">
     {{ cmt_form.as_p }}
     </form>
-<h5><a href="{% url 'addcomment' post.pk %}">Add Comment</a></h5><br>
+    <h5><a href="{% url 'addcomment' post.pk %}">Add Comment</a></h5><br>
     {% if not post.comments.all %}
         <small>No comments yet ...</small>
     {% else %}
@@ -55,6 +56,110 @@
            <p style="font-size: 18px">{{ cmt.body }}</p>
             <br><br>
         {% endfor %}
-    {% endif %}
+    {% endif %} -->
+
+    
+    
+       <!--========================= main content ========================-->
+    
+       <section class="main_conten" style="margin-top: 50px;">
+        <h1 id>{{ post.title }}</h1>
+        <h5>By {{ post.author }}</h5>
+        <small>Written on {{ post.date }}</small><br> 
+        <form method="POST" action="{% url 'deletepost' post.pk %}" onsubmit="return confirm('Are you sure ?');">
+            {% csrf_token %}
+            
+            {% if user.is_authenticated %}
+                {% if post.author.id == user.id %}
+                    <input class="btn btn-primary mt-3" type="button"
+                           onclick="location.href=`{% url 'updatepost' post.pk %}`" value="Edit"/>
+                    <button type="submit" class="btn btn-danger mt-3">Delete</button>
+                {% endif %}
+            {% endif %}
+        </form>
+        
+        
+        <div class="container">
+            <div class="row">
+    
+            <!--=========================content left ========================-->
+            <div class="col-md-9">
+              <div class="row">
+                  
+                <!--=============RECENT headline ==============-->
+                <div class="col-md-12 title mb30 mt30">
+                    <img src="{{ post.image.url }}" class="flex-shrink-0 me-3 mt-2 mb-3 "
+                    style="width:100%">
+                </div>
+                <div class="col-md-12 title mb30 ">
+                   
+                    <p style="font-size: 18px; text-align:justify">{{ post.description }}</p>
+                </div>
+           
+              </div>
+            </div>
+            <!--=========================content left end ========================-->
+    
+            <!--=========================content middle ========================-->
+    
+            <div class="col-md-3">
+    
+              <!--=============TECHNOLOGY ==============-->
+              <div class="row">
+                <div class="col-md-12 title mb30">
+                  <h5>LIST</h5>
+                </div>
+    
+                <div class="col-md-12 mb30">
+                  <div class="tecnology">
+                    {% for post in object_list|slice:":10" %}
+                      {% if forloop.first %}
+                        <div class="content_box">
+                          <span>
+                            <i class="fa fa-clock-o"></i> {{ post.date}} - New
+                          </span>
+                          <h6><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h6>
+                        </div>
+                      {%  else  %}
+                      <hr>
+                      <div class="content_box">
+                        <span>
+                          <i class="fa fa-clock-o"></i> {{ post.date}} 
+                        </span>
+                        <h6><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h6>
+                      </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <!--=============TECHNOLOGY end ==============-->
+    
+            </div>
+    
+            <!--=========================content middle end ========================-->
+            
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Comments Section</h3><br>
+                    <form method="post">
+                    {{ cmt_form.as_p }}
+                    </form>
+                    <h5><a href="{% url 'addcomment' post.pk %}">Add Comment</a></h5><br>
+                    {% if not post.comments.all %}
+                        <small>No comments yet ...</small>
+                    {% else %}
+                        {% for cmt in post.comments.all %}
+                            <strong>{{ cmt.name }}</strong> - <small>{{ cmt.date_added }}</small>
+                            <br>
+                           <p style="font-size: 18px">{{ cmt.body }}</p>
+                            <br><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </section>
 
 {% endblock %}
