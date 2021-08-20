@@ -803,3 +803,15 @@ h4 a{
     transform: translateX(-10px);
     transition: visibility 0s 250ms, opacity 250ms, transform 250ms;
 }
+.baiviet {
+    height: 256px !important;
+    overflow: hidden;
+}
+.baiviet1 img{
+	margin: auto;
+	
+}
+.baiviet2{
+    height: 300px !important;
+    overflow: hidden;
+}

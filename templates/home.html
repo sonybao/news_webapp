@@ -71,9 +71,12 @@
                   <i class="fa fa-eye"> {{ post.views }}</i>
                 </span>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 ">
                 <h4><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h4>
-                <p>{{ post.description }}</p>
+                <div class="baiviet">
+                  <p>{{ post.description }}</p>
+                </div>
+                
   
                 <div class="angkor">
                     <a href="{% url 'detailpost' post.pk %}">Continue reading</a>
@@ -98,7 +101,7 @@
         <!--=========== sub content left section ===========-->
         
         <div class="row">
-            <div class="col-md-6 pb15">
+            <div class="col-md-6 pb15 baiviet1">
                 <a href="{% url 'detailpost' post.pk %}"><img src="{{ post.image.url }}" class="img-responsive"></a>
             </div>
         
@@ -116,7 +119,7 @@
                     </div>
                 </div>
                 <h4><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h4>
-                <div><p>{{ post.description }}</p></div>
+                <div class="baiviet2"><p>{{ post.description }}</p></div>
                 
         
         
@@ -150,7 +153,7 @@
           <!--=============TECHNOLOGY ==============-->
           <div class="row">
             <div class="col-md-12 title mb30">
-              <h5>List</h5>
+              <h5>LIST</h5>
             </div>
 
             <div class="col-md-12 mb30">
