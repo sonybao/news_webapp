@@ -34,7 +34,9 @@
                 <label for="exampleInputPassword1">Bio</label>
                 <div type="email" class="form-control2">{{ user.profile.bio }}</div>
             </div>
-            <a class="btn btn-info" href="{%  url 'edit_profile' %}">Edit Profile</a>
+            
+            <a class="btn btn-primary" href="{%  url 'edit_profile' %}">Edit Profile</a>
+            <a class="btn btn-info"href="{% url 'changepass' %}">Change password </a>
             <a class="btn btn-danger" href="{%  url 'logout' %}">Logout</a>
         </div>
     

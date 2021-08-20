@@ -55,7 +55,7 @@ class CustomEditProfileForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     bio = forms.CharField(label='Bio', required=False,
                           widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}))
-    avatar = forms.ImageField(label='Profile Photo')
+    avatar = forms.ImageField(label='Profile Photo',widget=forms.ClearableFileInput)
     media_url = forms.CharField(label='Media URL', max_length=300, required=False,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
 
