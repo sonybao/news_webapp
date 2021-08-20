@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 from django.urls import reverse
 
@@ -9,7 +9,7 @@ class Post(models.Model):
     title = models.CharField(max_length=500)
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    description = models.TextField()
+    body = RichTextField(blank=True,null=True)
     views = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='blogs.images')
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 import blogs.views
 
@@ -34,5 +34,6 @@ urlpatterns = [
 
                   path('password/', profiles_views.PasswordChange.as_view(), name='changepass'),
                   path('logout/', profiles_views.LogoutSite.as_view(), name='logout'),
+                    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

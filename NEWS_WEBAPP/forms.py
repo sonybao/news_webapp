@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UsernameField, UserChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
-
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from blogs.models import Post, Comment
 from profiles.models import Profile
 
@@ -20,7 +20,7 @@ class CustomRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email",'first_name','last_name','password1', 'password2')
+        fields = ("username", "email", 'first_name', 'last_name', 'password1', 'password2')
         field_classes = {'username': UsernameField}
         help_texts = {
             'username': None,
@@ -72,3 +72,14 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('name', 'body')
+
+
+class CustomPostForm(forms.ModelForm):
+    title = forms.CharField(label='Tiêu đề', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    body = forms.CharField(label='Nhập bình luận: ', required=True,
+                           widget=CKEditorUploadingWidget)
+    image = forms.ImageField(label='Ảnh thumbnail: ', required=False, widget=forms.ClearableFileInput)
+
+    class Meta:
+        model = Post
+        fields = ('title','image','body')

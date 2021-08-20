@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
-from NEWS_WEBAPP.forms import CommentForm
+from NEWS_WEBAPP.forms import CommentForm, CustomPostForm
 from blogs.models import Post, Comment
 
 
@@ -18,18 +18,18 @@ def home_view(request):
 
 def about_view(request):
     return render(request, 'about.html')
-    
 
 
 class DetailPost(DetailView):
     model = Post
     template_name = 'detail_post.html'
-    
-    def listbaipost(request):
-        object_list_about = Post.objects.all().order_by('-date')
-        return render(request, 'detail_post.html', {
-            'object_list': object_list_about
-        })
+
+    # def listbaipost(request):
+    #     object_list_about = Post.objects.all().order_by('-date')
+    #     return render(request, 'detail_post.html', {
+    #         'object_list': object_list_about
+    #     })
+
 
 # def add_comment(request, pk):
 #     if request.method == 'POST':
@@ -49,8 +49,8 @@ class DetailPost(DetailView):
 
 class AddPost(LoginRequiredMixin, CreateView):
     model = Post
+    form_class = CustomPostForm
     template_name = 'add_post.html'
-    fields = ('title', 'description', 'image')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -58,10 +58,10 @@ class AddPost(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdatePost(LoginRequiredMixin,UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
     model = Post
+    form_class = CustomPostForm
     template_name = 'update_post.html'
-    fields = ('title', 'description', 'image')
 
 
 class DeletePost(DeleteView):

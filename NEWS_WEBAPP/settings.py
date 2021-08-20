@@ -42,9 +42,28 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'phonenumber_field',
-
-
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+CKEDITOR_UPLOAD_PATH = "blogs.images/"
+CKEDITOR_CONFIGS = {
+   'default': {
+       'width': 1000,
+       'height': 500,
+       'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'],
+            ['Image','Link', 'Unlink', 'Anchor'],
+            ['Flash', 'Table', 'HorizontalRule'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+            ['Maximize'],
+        ],
+        'extraPlugins': 'justify,liststyle,indent',
+   },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
