@@ -2,17 +2,17 @@
 
 
 {% block content %}
-    <div class="d-flex justify-content-center">
-
-         <form method="post" onsubmit="return confirm('Are you sure ?')">
-            {%  csrf_token %}
-             <table>
-            {{ form.as_table }}
-                 </table>
-            <input type="button" class="btn btn-danger mt-3" value="Cancel"
+<div class="centerllogin changepw">
+    <div class="headerlogin">Change Password</div>
+    <form method="post" onsubmit="return confirm('Are you sure ?')">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="button" class="btn btn-danger " value="Cancel"
                            onclick="window.history.back()"/>
-            <button type="submit" class="btn btn-primary mt-3">Change Pass</button>
-        </form>
-    </div>
+        <input type="submit" value="Change Pass">
+       
+        
+    </form>
+</div>
 {% endblock %}
 

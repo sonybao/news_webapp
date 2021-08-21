@@ -816,3 +816,28 @@ h4 a{
     height: 300px !important;
     overflow: hidden;
 }
+.editprofile p{
+    margin-bottom: 20px;
+}
+.changepw form input{
+    height: 33px;
+}
+.changepw form input[type="button"]{
+    width: 120px;
+    height: 45px;
+    margin: 0px;
+    border: none;
+    border-radius: 5px;
+}
+.changepw form input[type="submit"]{
+    width: 130px;
+    height: 45px;
+    margin: 0px;
+    border: none;
+    border-radius: 5px;
+    background: #337ab7;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    float: right;
+}
