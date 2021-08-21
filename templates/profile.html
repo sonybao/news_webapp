@@ -6,9 +6,12 @@
 
     <div class="mainprofile row">
         <div class="col-md-4 mainprofile-left">
+            {% if user.profile.avatar %}
             <img src="{{ user.profile.avatar.url }}" class="flex-shrink-0 mt-2 mb-3  rounded-circle"><br>
+            {% else %}
+            <img src="https://www.vippng.com/png/full/385-3856307_png-file-svg-user-icon.png" class="flex-shrink-0 mt-2 mb-3  rounded-circle"><br>
+            {% endif %}
             <h1>{{ user.username }} </h1>
-            
             <a href="{{ user.profile.media_url }}" style="font-size: 20px"><i class="fa fa-facebook-square"
                     aria-hidden="true"></i>
             </a><br>

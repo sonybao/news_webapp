@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import LOGIN_URL, LOGIN_REDIRECT_URL
+from django.contrib import messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,9 +47,12 @@ INSTALLED_APPS = [
     'ckeditor_uploader'
 ]
 CKEDITOR_UPLOAD_PATH = "blogs.images/"
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 CKEDITOR_CONFIGS = {
    'default': {
-       'width': 1000,
+       'width': 1140,
        'height': 500,
        'toolbar_Full': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],

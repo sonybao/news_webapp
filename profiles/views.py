@@ -5,14 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
-
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-
-import profiles
-from NEWS_WEBAPP import settings
 from .models import Profile
 from django.views.generic import TemplateView, FormView, UpdateView
 from NEWS_WEBAPP.forms import CustomRegisterForm, CustomEditProfileForm, ProfileForm, CustomLoginForm
@@ -25,17 +19,25 @@ def login_register(request):
             if register_form.is_valid():
                 register_form.save()
                 username = register_form.cleaned_data.get('username')
-                messages.success(request, f'Account {username} create success !')
+                messages.success(request, f'Tài khoản {username} tạo thành công ')
                 new_user = authenticate(username=register_form.cleaned_data['username'],
                                         password=register_form.cleaned_data['password1'],
                                         )
                 login(request, new_user)
-                return redirect('profile')
+                if request.user.is_authenticated:
+                    messages.success(request, 'Đăng nhập thành công')
+                else:
+                    messages.error(request, 'Tên tài khoản đã tồn tại')
+            return redirect('login')
         elif 'login' in request.POST:
             log_view = views.LoginView.as_view(template_name='login.html')
             log_view(request)
-            messages.success(request, 'Login Success')
-            return redirect('profile')
+            if request.user.is_authenticated:
+                messages.success(request, 'Đăng nhập thành công')
+            else:
+                messages.error(request,'Tài khoản không tồn tại')
+            return redirect('login')
+
     else:
         if request.user.is_authenticated:
             return redirect('profile')
@@ -62,10 +64,10 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
+            messages.success(request, 'Cập nhật tài khoản thành công')
             return redirect('profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Vui lòng điền đúng định dạng')
     else:
         user_form = CustomEditProfileForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)

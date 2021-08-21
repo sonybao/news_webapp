@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
@@ -58,9 +59,10 @@ class AddPost(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdatePost(LoginRequiredMixin, UpdateView):
+class UpdatePost(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Post
     form_class = CustomPostForm
+    success_message = 'Cập nhật bài viết thành công'
     template_name = 'update_post.html'
 
 
