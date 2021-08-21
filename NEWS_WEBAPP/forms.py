@@ -8,15 +8,15 @@ from profiles.models import Profile
 
 
 class CustomRegisterForm(UserCreationForm):
-    username = forms.CharField(label='Username', max_length=100,
+    username = forms.CharField(label='Tài khoản', max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control',}) , required=True)
-    first_name = forms.CharField(label='First Name', max_length=100,
+    first_name = forms.CharField(label='Họ', max_length=100,
                                  widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
-    last_name = forms.CharField(label='Last Name', max_length=100,
+    last_name = forms.CharField(label='Tên', max_length=100,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
+    password1 = forms.CharField(label='Mật khẩu', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
+    password2 = forms.CharField(label='Xác nhận mật khẩu', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
         model = User
@@ -29,9 +29,9 @@ class CustomRegisterForm(UserCreationForm):
 
 
 class CustomLoginForm(AuthenticationForm):
-    username = forms.CharField(label='Username', max_length=100,
+    username = forms.CharField(label='Tài khoản', max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
+    password = forms.CharField(label='Mật Khẩu', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
         model = User
@@ -39,12 +39,12 @@ class CustomLoginForm(AuthenticationForm):
 
 
 class CustomEditProfileForm(forms.ModelForm):
-    username = forms.CharField(label='Username', max_length=100,
+    username = forms.CharField(label='Tài khoản', max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}) , required=True)
-    first_name = forms.CharField(label='First Name', max_length=100,
+    first_name = forms.CharField(label='Họ', max_length=100,
                                  widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
-    last_name = forms.CharField(label='Last Name', max_length=100,
+    last_name = forms.CharField(label='Tên', max_length=100,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
@@ -53,10 +53,10 @@ class CustomEditProfileForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    bio = forms.CharField(label='Bio', required=False,
+    bio = forms.CharField(label='Tiểu sử', required=False,
                           widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}))
-    avatar = forms.ImageField(label='Profile Photo',widget=forms.FileInput)
-    media_url = forms.CharField(label='Media URL', max_length=300, required=False,
+    avatar = forms.ImageField(label='Ảnh Profile',widget=forms.FileInput)
+    media_url = forms.CharField(label='Mạng xã hội', max_length=300, required=False,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:

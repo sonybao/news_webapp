@@ -16,9 +16,12 @@
                 <p><label for="id_body">Viết bình luận:</label><br> 
                     <textarea name="body" rows="10" required id="id_body" style="width: 100%;">
             </textarea></p>
-                <input type="button" class="btn btn-danger mt-3" value="Cancel"
-                       onclick="window.history.back()"/>
-                <button type="submit" class="btn btn-primary mt-3">Thêm bình luận</button>
+            <div class="text-right">
+                <input type="button" style=" border-radius: 5px;" class="btn btn-danger mt-3" value="Thoát"
+                onclick="window.history.back()"/>
+                <button type="submit"  style="margin-left: 20px; border-radius: 5px;" class="btn btn-primary mt-3">Thêm bình luận</button>
+            </div>
+               
             {% else %}
             <br>
                 Cần đăng nhập để tạo bình luận<br>

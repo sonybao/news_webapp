@@ -21,6 +21,7 @@ a {
   -o-transition: all 0.4s;
   transition: all 0.4s;
   text-decoration:none;
+  cursor: pointer;
 
 
 }

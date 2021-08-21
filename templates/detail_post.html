@@ -14,9 +14,9 @@
             
             {% if user.is_authenticated %}
                 {% if post.author.id == user.id %}
-                    <input class="btn btn-primary mt-3" type="button"
+                    <input class="btn btn-primary mt-3" style="margin-right: 20px; border-radius: 5px;" type="button"
                            onclick="location.href=`{% url 'updatepost' post.pk %}`" value="Sửa"/>
-                    <button type="submit" class="btn btn-danger mt-3">Xóa</button>
+                    <button type="submit"  style=" border-radius: 5px;" class="btn btn-danger mt-3">Xóa</button>
                 {% endif %}
             {% endif %}
         </form>

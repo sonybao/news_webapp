@@ -3,13 +3,13 @@
 
 {% block content %}
     <div class="centerllogin">
-        <div class="headerlogin">Login</div>
+        <div class="headerlogin">Đăng nhập</div>
         <form method="post">
             {% csrf_token %}
             {{ login_form }}
             <input type="hidden" name="login" value="True"/>
-            <input type="submit" value="Sign in">
-			<button type="button" data-toggle="modal" data-target="#exampleModalCenter">Create new account</button>
+            <input type="submit" value="Đăng nhập">
+			<button type="button" data-toggle="modal" data-target="#exampleModalCenter">Tạo tài khoản</button>
         </form>
     </div>
 
@@ -18,7 +18,7 @@
         <div class="modal-dialog modal-dialog-centered createfrom" role="document">
             <div class="modal-content createfrom">
                 <div class="modal-header ">
-                    <div class="modal-title " id="exampleModalLabel">Create New Account <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="modal-title " id="exampleModalLabel">Tạo tài khoản mới<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <strong><span aria-hidden="true">&times;</span></strong>
                       </button></div>
                     
@@ -30,7 +30,7 @@
                         <input type="hidden" name="signup" value="True"/>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="Create Account">
+                        <input type="submit" value="Tạo">
                         <!-- <button type="submit" class="btn btn-success">Create Account</button> -->
                     </div>
                 </form>

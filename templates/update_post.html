@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="mainprofile row">
-    <h2 style="margin-bottom: 50px;">EDIT POST</h2>
+    <h2 style="margin-bottom: 50px;">Chỉnh sửa bài viết</h2>
     <div class="col-md-12 editprofile">
         {% if user.is_authenticated %}
         {% if post.author.id == user.id %}
@@ -14,9 +14,12 @@
                     {{ form.media }}
 
                 </table>
-                <input type="button" class="btn btn-danger mt-3" value="Cancel"
-                       onclick="location.href='{% url 'detailpost' post.pk %}'"/>
-                <button type="submit" class="btn btn-primary mt-3">Update Post</button>
+                <div class="text-right">
+                    <input type="button" style=" border-radius: 5px;" class="btn btn-danger mt-3" value="thoát"
+                    onclick="location.href=`{% url 'detailpost' post.pk %}`"/>
+                    <button type="submit" style="margin-left: 20px; border-radius: 5px;" class="btn btn-primary mt-3">Cập nhật</button>
+                </div>
+                
             </form>
         {% else %}
             <h1>You re not allow here !!</h1>
