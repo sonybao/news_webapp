@@ -13,7 +13,7 @@
       <div class="row">
 
         <div class="col-md-12 title mb30">
-          <h5>HEADLINES</h5>
+          <h5>Đề xuất</h5>
         </div>
         <div class="col-md-12 mb30">
           <div id="owl-demo">
@@ -53,7 +53,7 @@
           <div class="row">
             <!--=============RECENT headline ==============-->
             <div class="col-md-12 title mb30">
-              <h5>RECENT NEWS</h5>
+              <h5>Tin Tức</h5>
             </div>
             <!--=============RECENT headline end==============-->
 
@@ -61,26 +61,26 @@
 
             {% for post in object_list|slice:":7"  %}
             {% if forloop.first %}
-            <div class="col-md-12 mb30">
+            <div class="col-md-12 mb30 toprecent">
                 <a href="{% url 'detailpost' post.pk %}"><img src="{{ post.image.url }}" class="img-responsive"></a>
             </div>
-            <div class="col-md-12 pb15 span_and_title">
-                <span class="tag">{{ post.author }}</span>
+            <div class="col-sm-12 pb15 span_and_title">
+                <span class="tag">{{ post.author.first_name}} {{ post.author.last_name }}</span>
                 <time><i class="fa fa-clock-o"></i>{{ post.date }}</time>
                 <span class="comment">
                   <i class="fa fa-eye"> {{ post.views }}</i>
                 </span>
             </div>
             <div class="col-md-12 ">
-                <h4 ><a href="{% url 'detailpost' post.pk %}" style="font-size: 20px;">{{ post.title }}</a></h4>
+                <h4 ><a href="{% url 'detailpost' post.pk %}" style="font-size: 20px; text-align: justify;">{{ post.title }}</a></h4>
                 <div class="baiviet">
-                  <p style="text-align:justify">{{ post.description }}</p>
+                  <p style="text-align:justify">{{ post.body|safe }}</p>
                 </div>
                 
   
                 <div class="angkor">
-                    <a href="{% url 'detailpost' post.pk %}">Continue reading</a>
-                    <div class="social share"><i class="fa fa-share-alt"></i> Share
+                    <a href="{% url 'detailpost' post.pk %}">Xem thêm</a>
+                    <div class="social share"><i class="fa fa-share-alt"></i> Chia sẻ
                       <ul>
                         <li><a href="#"><i class="icon fa fa-facebook-square"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
@@ -107,25 +107,23 @@
         
             <div class="col-md-6">
                 <div class="row">
-        
-                    <div class="col-md-12 pb15 span_and_title">
-                        <span class="tag">{{ post.author }}</span>
-                        <time><i class="fa fa-clock-o"></i>{{ post.date }}</time>
-                        <span class="comment">
-                        <i class="fa fa-eye"> {{ post.views }}</i>
-                </span>
-        
+                    <div class="col-sm-12 pb15 span_and_title">
+                        <span class="tag">{{ post.author.first_name}} {{ post.author.last_name }}</span>
+                          <time><i class="fa fa-clock-o"></i>{{ post.date }}</time>
+                          <span class="comment luotxem">
+                          <i class="fa fa-eye"> {{ post.views }}</i>
+                        </span>
         
                     </div>
                 </div>
-                <h4><a href="{% url 'detailpost' post.pk %}" style="font-size: 15px;">{{ post.title }}</a></h4>
-                <div class="baiviet2"><p style="text-align:justify">{{ post.description }}</p></div>
+                <h4><a href="{% url 'detailpost' post.pk %}" style="font-size: 16px; text-align: justify;">{{ post.title }}</a></h4>
+                <div class="baiviet2"><p style="text-align:justify">{{ post.body|safe }}</p></div>
                 
         
         
                 <div class="angkor">
-                    <a href="{% url 'detailpost' post.pk %}">Continue reading</a>
-                    <div class="social share"><i class="fa fa-share-alt"></i> Share
+                    <a href="{% url 'detailpost' post.pk %}">Xem thêm</a>
+                    <div class="social share"><i class="fa fa-share-alt"></i> Chia sẻ
                         <ul>
                             <li><a href="#"><i class="icon fa fa-facebook-square"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
@@ -153,7 +151,7 @@
           <!--=============TECHNOLOGY ==============-->
           <div class="row">
             <div class="col-md-12 title mb30">
-              <h5>LIST</h5>
+              <h5>Danh sách</h5>
             </div>
 
             <div class="col-md-12 mb30">
@@ -239,7 +237,7 @@
          
           <div class="row">
             <div class="col-md-12 title mb30">
-              <h5>ABOUT NEWSTODAY</h5>
+              <h5>Tin mới hôm nay</h5>
             </div>
 
               {% for post in object_list|slice:":1"  %}
@@ -248,7 +246,7 @@
                     <img src="{{ post.image.url }}" class="img-responsive">
                   </div>
                   <div class="col-md-12 mb30 baiviet2">
-                    <p style="text-align:justify">{{ post.description }}</p>
+                    <p style="text-align:justify">{{ post.body|safe }}</p>
                   </div>
               {% endfor %}
             

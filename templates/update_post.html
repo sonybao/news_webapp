@@ -2,26 +2,30 @@
 
 
 {% block content %}
-    <div class="d-flex justify-content-center mt-5">
+<div class="mainprofile row">
+    <h2 style="margin-bottom: 50px;">EDIT POST</h2>
+    <div class="col-md-12 editprofile">
         {% if user.is_authenticated %}
-            {% if post.author.id == user.id %}
-                <form method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure ?')">
-                    <table>
-                        {% csrf_token %}
-                        {{ form.as_p}}
-                        {{ form.media }}
+        {% if post.author.id == user.id %}
+            <form method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure ?')">
+                <table>
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    {{ form.media }}
 
-                    </table>
-                    <input type="button" class="btn btn-danger mt-3" value="Cancel"
-                           onclick="location.href='{% url 'detailpost' post.pk %}'"/>
-                    <button type="submit" class="btn btn-primary mt-3">Update Post</button>
-                </form>
-            {% else %}
-                <h1>You re not allow here !!</h1>
-            {% endif %}
-            {% else %}
-             <h1>You re not allow here !!</h1>
+                </table>
+                <input type="button" class="btn btn-danger mt-3" value="Cancel"
+                       onclick="location.href='{% url 'detailpost' post.pk %}'"/>
+                <button type="submit" class="btn btn-primary mt-3">Update Post</button>
+            </form>
+        {% else %}
+            <h1>You re not allow here !!</h1>
         {% endif %}
-
+        {% else %}
+         <h1>You re not allow here !!</h1>
+        {% endif %}
+        <br>
     </div>
+ </div>
+   
 {% endblock %}

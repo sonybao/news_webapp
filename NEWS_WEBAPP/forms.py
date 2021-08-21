@@ -9,14 +9,14 @@ from profiles.models import Profile
 
 class CustomRegisterForm(UserCreationForm):
     username = forms.CharField(label='Username', max_length=100,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control',}) , required=True)
     first_name = forms.CharField(label='First Name', max_length=100,
-                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                 widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
     last_name = forms.CharField(label='Last Name', max_length=100,
-                                widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+                                widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
         model = User
@@ -30,8 +30,8 @@ class CustomRegisterForm(UserCreationForm):
 
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(label='Username', max_length=100,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
         model = User
@@ -40,12 +40,12 @@ class CustomLoginForm(AuthenticationForm):
 
 class CustomEditProfileForm(forms.ModelForm):
     username = forms.CharField(label='Username', max_length=100,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}) , required=True)
     first_name = forms.CharField(label='First Name', max_length=100,
-                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                 widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
     last_name = forms.CharField(label='Last Name', max_length=100,
-                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
 
     class Meta:
         model = User
@@ -65,9 +65,9 @@ class ProfileForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
     body = forms.CharField(label='Write comment',
-                           widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}))
+                           widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 15}) , required=True)
 
     class Meta:
         model = Comment
@@ -75,8 +75,8 @@ class CommentForm(forms.ModelForm):
 
 
 class CustomPostForm(forms.ModelForm):
-    title = forms.CharField(label='Tiêu đề', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    body = forms.CharField(label='Nhập bình luận: ', required=True,
+    title = forms.CharField(label='Tiêu đề', widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
+    body = forms.CharField(label='Nhập nội dung bài viết: ', required=True,
                            widget=CKEditorUploadingWidget)
     image = forms.ImageField(label='Ảnh thumbnail: ', required=False, widget=forms.ClearableFileInput)
 

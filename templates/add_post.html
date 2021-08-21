@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
-
+{% block title %}Thêm bài viết{% endblock %}
 
 {% block content %}
-         <form method="post" enctype="multipart/form-data">
-            {%  csrf_token %}
-             <div class="form-group">
-                {{ form.media }}
-                {{ form.as_p }}
-         </div>
-             <input type="button" class="btn btn-danger mt-3" value="Cancel"
-                           onclick="location.href='/'"/>
-            <button type="submit" class="btn btn-primary mt-3">Add Blog</button>
-         </form>
+<div class="mainprofile row">
+   <h2 style="margin-bottom: 50px;">Thêm bài viết</h2>
+   <div class="col-md-12 editprofile">
+      <form method="post" enctype="multipart/form-data">
+         {%  csrf_token %}
+          <div class="form-group">
+             {{ form.media }}
+             {{ form.as_p }}
+      </div>
+          <input type="button" class="btn btn-danger mt-3" value="Cancel"
+                        onclick="location.href='/'"/>
+         <button type="submit" class="btn btn-primary mt-3">Thêm bài viết</button>
+      </form>
+       <br>
+   </div>
+</div>
+         
 {% endblock %}

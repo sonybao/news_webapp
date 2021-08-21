@@ -30,7 +30,7 @@
         <link href="{% static 'css1/responsive.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
-    <title>{% block title %}Welcome Home{% endblock %}</title>
+    <title>{% block title %}Trang chủ{% endblock %}</title>
 </head>
 <script>
     var m = document.getElementsByClassName("alert");  // Return an array
@@ -89,15 +89,15 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <div class="row">
-                                <div class="col-sm-9">
+                                <div class="col-sm-8">
                                     <ul class="nav navbar-nav navbar-left">
-                                        <li><a href="/" class="padd_0">Home</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                        <li><a href="{% url 'about' %}">About Us</a></li>
+                                        <li><a href="/" class="padd_0">Trang chủ</a></li>
+                                        <li><a href="#">Liên Hệ</a></li>
+                                        <li><a href="{% url 'about' %}">Giới thiệu</a></li>
                                         {% if user.is_authenticated %}
-                                            <li><a href="{% url 'addpost' %}">Add Post</a></li>
+                                            <li><a href="{% url 'addpost' %}">Thêm bài viết</a></li>
                                             {% if user.is_superuser %}
-                                                <li><a href="/admin/">ADMIN</a></li>
+                                                <li><a href="/admin/">Admin</a></li>
                                             {% endif %}
                                         {% endif %}
 
@@ -111,46 +111,50 @@
 
                                 </div>
                                 {% if user.is_authenticated %}
-                                    <div class="col-sm-1 buttonlogin ">
+                                    <div class="col-sm-2 buttonlogin ">
 
                                         <ul class="nav navbar-nav navbar-right ">
                                             <li class="nav-item dropdown Profilemenu1">
                                                 <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link"
                                                    data-toggle="dropdown">
-                          <span class="user-img">
-                            <img class="rounded-circle" src="{{ user.profile.avatar.url }}" width="40" height="40">
-                          </span>
+                                                <span class="user-img">
+                                                    {% if user.profile.avatar %}
+                                                    <img class="rounded-circle" src="{{ user.profile.avatar.url }}" width="40" height="40">
+                                                    {% else %}
+                                                    <img class="rounded-circle" src="https://www.vippng.com/png/full/385-3856307_png-file-svg-user-icon.png" width="40" height="40">
+                                                {% endif %}
+                                              </span>
                                                 </a>
                                                 <div class="dropdown-menu Profilemenu">
                                                     <ul>
                                                         <li><a class="dropdown-item "
-                                                               onclick="location.href=`{% url 'profile' %}`">Profile</a>
+                                                               onclick="location.href=`{% url 'profile' %}`">Thông tin cá nhân</a>
                                                         </li>
                                                         <li><a class="dropdown-item "
-                                                               onclick="location.href=`{% url 'logout' %}`">Logout</a>
+                                                               onclick="location.href=`{% url 'logout' %}`">Đăng xuất</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </li>
                                             <li class="prohiden">
                                                 <button type="button" onclick="location.href=`{% url 'profile' %}`">
-                                                    PROFILE
+                                                    Thông tin cá nhan
                                                 </button>
                                             </li>
                                             <li class="prohiden prohiden1">
                                                 <button type="button" onclick="location.href=`{% url 'logout' %}`">
-                                                    LOGOUT
+                                                    Đăng xuất
                                                 </button>
                                             </li>
                                         </ul>
 
                                     </div>
                                 {% else %}
-                                    <div class="col-sm-1 buttonlogin">
+                                    <div class="col-sm-2 buttonlogin">
                                         <ul class="nav navbar-nav navbar-right">
                                             <li>
                                                 <button type="button" onclick="location.href=`{% url 'login' %}`">
-                                                    LOGIN
+                                                    Đăng nhập
                                                 </button>
                                             </li>
                                         </ul>

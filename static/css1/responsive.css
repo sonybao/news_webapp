@@ -1,6 +1,8 @@
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
 	
-
+.luotxem{
+	display: none !important;
+}
 
 
 
@@ -27,8 +29,14 @@
 	max-height:none;
 }
 .baiviet2{
-    height: 95px !important;
+    
     overflow: hidden;
+	 text-align: justify;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
 }
 
 
@@ -50,8 +58,12 @@
 		max-height:none;
 	}
 	.baiviet2{
-		height: 95px !important;
 		overflow: hidden;
+	 	text-align: justify;
+   		text-overflow: ellipsis;
+   		display: -webkit-box;
+    	-webkit-line-clamp: 3; /* number of lines to show */
+    	-webkit-box-orient: vertical;
 	}
 }
 
