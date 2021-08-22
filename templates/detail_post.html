@@ -82,12 +82,12 @@
             </div>
             <div class="row">
               <div class="col-md-9">
-                <h3>Ý kiến</h3>
+                <h3>Bình luận</h3>
                 {% if user.is_authenticated %}
                 <form method="post" enctype="multipart/form-data" action="{% url 'addcomment' post.pk %}">
                   {% csrf_token %}
 
-                  <textarea rows="3" name="body" required id="id_body" class="cmt" placeholder="Ý kiến của bạn"></textarea>
+                  <textarea rows="3" name="body" required id="id_body" class="cmt" placeholder="Bình luận của bạn"></textarea>
                   <button type="submit" class="btn btn-success mx-1" style="float: right; margin-top:10px; border-radius:5px">Gửi</button>
                   <input type="text" name="name" required class="tencmt" id="id_name" value=" {{ user.first_name }} {{ user.last_name }}" readonly>
                   <div class="hrrr"></div>
@@ -110,7 +110,7 @@
 
 
                 {% else %}
-                  <a style="font-size: 20px" href="{% url 'login' %}">Đăng nhập để bình luận</a>
+                  <a style="font-size: 20px; margin: 20px 0px;" href="{% url 'login' %}">Đăng nhập </a>
                 {% endif %}
                 
                 {% if not post.comments.all %}
