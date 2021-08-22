@@ -87,14 +87,10 @@
                 <form method="post" enctype="multipart/form-data" action="{% url 'addcomment' post.pk %}">
                   {% csrf_token %}
 
-                  <img class="rounded-circle" src="{{user.profile.avatar.url }}"  >
-
-                  <input type="text" name="name" required
-                    style="border: none;background: none;outline: none;font-weight: bold" id="id_name"
-                    value=" {{ user.first_name }} {{ user.last_name }}" readonly><br>
-                  <textarea rows="5" name="body" required id="id_body" style="width:100%"></textarea><br>
-                  
-                  <button type="submit" class="btn btn-success mx-1" style="float: right;">Add Blog</button>
+                  <textarea rows="3" name="body" required id="id_body" class="cmt" placeholder="Ý kiến của bạn"></textarea>
+                  <button type="submit" class="btn btn-success mx-1" style="float: right; margin-top:10px; border-radius:5px">Gửi</button>
+                  <input type="text" name="name" required class="tencmt" id="id_name" value=" {{ user.first_name }} {{ user.last_name }}" readonly>
+                  <div class="hrrr"></div>
                 </form>
 
 
@@ -116,15 +112,19 @@
                 {% else %}
                   <a style="font-size: 20px" href="{% url 'login' %}">Đăng nhập để bình luận</a>
                 {% endif %}
+                
                 {% if not post.comments.all %}
                 <br>
+                
                 <h5>Chưa có bình luận...</h5><br>
                 {% else %}
                 {% for cmt in post.comments.all %}
-                <br><br>
-                <h4>{{ cmt.name }} <small> - {{ cmt.date_added }}</small></h4>
-                <p style="font-size: 15px">{{ cmt.body }}</p>
-                <br><br>
+                <div class="phancmt">
+                  <h5>{{ cmt.name }} <small> - {{ cmt.date_added }}</small></h5>
+                  <p style="font-size: 15px">{{ cmt.body }}</p>
+                </div>
+                
+                
                 {% endfor %}
                 {% endif %}
               </div>
