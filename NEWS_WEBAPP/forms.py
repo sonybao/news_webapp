@@ -78,7 +78,7 @@ class CustomPostForm(forms.ModelForm):
     title = forms.CharField(label='Tiêu đề', widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
     body = forms.CharField(label='Nhập nội dung bài viết: ', required=True,
                            widget=CKEditorUploadingWidget)
-    image = forms.ImageField(label='Ảnh thumbnail: ', required=False, widget=forms.ClearableFileInput)
+    image = forms.ImageField(label='Ảnh thumbnail: ', required=True, widget=forms.ClearableFileInput)
 
     class Meta:
         model = Post
