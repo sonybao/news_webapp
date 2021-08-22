@@ -946,3 +946,47 @@ textarea{
     background: #c5c5c5;
     margin-top: 90px;
 }
+.timkiem{
+    margin-bottom: 40px;
+}
+.timkiem h3{
+    overflow: hidden;
+    text-align: justify;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.timkiem h3{
+    overflow: hidden;
+    text-align: justify;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.timkiem div{
+    overflow: hidden;
+    text-align: justify;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.timkiem span{
+    font-style: italic;
+    color: #949494;
+}
+.timkiem time{
+    font-style: italic;
+    color: #949494;
+    margin-left: 10px;
+}
+.timkiem h1,
+.timkiem h2,
+.timkiem h3,
+.timkiem h4,
+.timkiem h5,
+.timkiem h6{
+    display: none;
+}

@@ -104,8 +104,9 @@
                                     </ul>
                                 </div>
                                 <div class="col-sm-2">
-                                    <form action="" method="" class="hiden_responsive search">
-                                        <input type="text" name="" value="" class="search-field" required>
+                                    <form action="{% url 'search' %}" method="POST" class="hiden_responsive search">
+                                        {% csrf_token %}
+                                        <input type="text" name="search" value="" class="search-field" placeholder="Tìm tiêu đề bài viết..." required>
                                         <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
 

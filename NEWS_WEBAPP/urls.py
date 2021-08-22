@@ -35,5 +35,6 @@ urlpatterns = [
                   path('password/', profiles_views.PasswordChange.as_view(), name='changepass'),
                   path('logout/', profiles_views.LogoutSite.as_view(), name='logout'),
                     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+                    path('search', blogs.views.search_bar, name='search'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

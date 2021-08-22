@@ -88,3 +88,11 @@ class AddCommentPost(CreateView):
     def get_success_url(self):
         postid = self.kwargs['pk']
         return reverse_lazy('detailpost', kwargs={'pk': postid})
+
+def search_bar(request):
+    if request.method == "POST":
+        searched = request.POST['search']
+        search_content = Post.objects.filter(title__icontains=searched)
+        return render(request, 'search.html', {'searched': searched,'search_content':search_content})
+    else:
+        return render(request, 'search.html', {})
