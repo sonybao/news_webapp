@@ -40,7 +40,7 @@ class CustomLoginForm(AuthenticationForm):
 
 class CustomEditProfileForm(forms.ModelForm):
     username = forms.CharField(label='Tài khoản', max_length=100,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)
+                               widget=forms.TextInput(attrs={'class': 'form-control' , 'readonly':'readonly'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}) , required=True)
     first_name = forms.CharField(label='Họ', max_length=100,
                                  widget=forms.TextInput(attrs={'class': 'form-control'}) , required=True)

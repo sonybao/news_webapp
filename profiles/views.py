@@ -86,7 +86,7 @@ class PasswordChange(PasswordChangeView):
         form.save()
         self.request.session.flush()
         logout(self.request)
-        messages.success(self.request, 'Changed Password Successfully')
+        messages.success(self.request, 'Đổi mật khẩu thành công')
         return super().form_valid(form)
 
 

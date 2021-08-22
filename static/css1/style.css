@@ -607,7 +607,9 @@ h4 a{
 	border-radius: 50px;
 }
 .rounded-circle {
+    height: 40px;
     border-radius: 50%!important;
+    object-fit: contain;
 }
 .Profilemenu{
     min-width: 170px;  
@@ -815,6 +817,9 @@ h4 a{
 .baiviet table{
     display: none;
 }
+.baiviet img{
+    display: none;
+}
 .baiviet h4,
 .baiviet h1,
 .baiviet h2,
@@ -837,6 +842,9 @@ h4 a{
     -webkit-box-orient: vertical;
 }
 .baiviet2 table{
+    display: none;
+}
+.baiviet2 img{
     display: none;
 }
 .baiviet2 h4,
@@ -904,4 +912,7 @@ h4 a{
 .main_content h1{
     font-size: 45px;
     text-align: justify;
+}
+textarea{
+    resize: none;
 }

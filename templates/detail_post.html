@@ -52,21 +52,21 @@
     
                 <div class="col-md-12 mb30">
                   <div class="tecnology">
-                    {% for post in object_list|slice:":10" %}
+                    {% for posts in other_posts|slice:":10" %}
                       {% if forloop.first %}
                         <div class="content_box">
                           <span>
-                            <i class="fa fa-clock-o"></i> {{ post.date}} - Mới
+                            <i class="fa fa-clock-o"></i> {{ posts.date}} - Mới
                           </span>
-                          <h6><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h6>
+                          <h6><a href="{% url 'detailpost' posts.pk %}">{{ posts.title }}</a></h6>
                         </div>
                       {%  else  %}
                       <hr>
                       <div class="content_box">
                         <span>
-                          <i class="fa fa-clock-o"></i> {{ post.date}} 
+                          <i class="fa fa-clock-o"></i> {{ posts.date}} 
                         </span>
-                        <h6><a href="{% url 'detailpost' post.pk %}">{{ post.title }}</a></h6>
+                        <h6><a href="{% url 'detailpost' posts.pk %}">{{ posts.title }}</a></h6>
                       </div>
                       {% endif %}
                     {% endfor %}
@@ -81,23 +81,57 @@
             
             </div>
             <div class="row">
-              <div class="col-md-12">
-                  <h3>Phần bình luận</h3><br>
-                  <form method="post">
-                  {{ cmt_form.as_p }}
-                  </form>
-                  <strong><a href="{% url 'addcomment' post.pk %}">Thêm bình luận</a></strong><br><br>
-                  {% if not post.comments.all %}
-                      <small>Chưa có bình luận ...</small>
-                  {% else %}
-                      {% for cmt in post.comments.all %}
-                          <h4>{{ cmt.name }}  <small> -  {{ cmt.date_added }}</small></h4>
-                         <p style="font-size: 15px">{{ cmt.body }}</p>
-                          <br><br>
-                      {% endfor %}
-                  {% endif %}
+              <div class="col-md-9">
+                <h3>Ý kiến</h3>
+                {% if user.is_authenticated %}
+                <form method="post" enctype="multipart/form-data" action="{% url 'addcomment' post.pk %}">
+                  {% csrf_token %}
+
+                  <img class="rounded-circle" src="{{user.profile.avatar.url }}"  >
+
+                  <input type="text" name="name" required
+                    style="border: none;background: none;outline: none;font-weight: bold" id="id_name"
+                    value=" {{ user.first_name }} {{ user.last_name }}" readonly><br>
+                  <textarea rows="5" name="body" required id="id_body" style="width:100%"></textarea><br>
+                  
+                  <button type="submit" class="btn btn-success mx-1" style="float: right;">Add Blog</button>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% else %}
+                  <a style="font-size: 20px" href="{% url 'login' %}">Đăng nhập để bình luận</a>
+                {% endif %}
+                {% if not post.comments.all %}
+                <br>
+                <h5>Chưa có bình luận...</h5><br>
+                {% else %}
+                {% for cmt in post.comments.all %}
+                <br><br>
+                <h4>{{ cmt.name }} <small> - {{ cmt.date_added }}</small></h4>
+                <p style="font-size: 15px">{{ cmt.body }}</p>
+                <br><br>
+                {% endfor %}
+                {% endif %}
               </div>
-          </div>
+            </div>
+     
+
+
         </div>
       </section>
 {% endblock %}

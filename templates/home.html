@@ -59,7 +59,7 @@
 
             <!--=============RECENT content==============-->
 
-            {% for post in object_list|slice:":7"  %}
+            {% for post in object_list|slice:":6"  %}
             {% if forloop.first %}
             <div class="col-md-12 mb30 toprecent">
                 <a href="{% url 'detailpost' post.pk %}"><img src="{{ post.image.url }}" class="img-responsive"></a>

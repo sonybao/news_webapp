@@ -24,7 +24,10 @@ def about_view(request):
 class DetailPost(DetailView):
     model = Post
     template_name = 'detail_post.html'
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['other_posts'] = Post.objects.all().order_by('-date')
+        return context
     # def listbaipost(request):
     #     object_list_about = Post.objects.all().order_by('-date')
     #     return render(request, 'detail_post.html', {
@@ -55,7 +58,7 @@ class AddPost(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        messages.success(self.request, 'Added Post Successfully')
+        messages.success(self.request, 'Thêm bài viết thành công')
         return super().form_valid(form)
 
 
@@ -74,12 +77,12 @@ class DeletePost(DeleteView):
 
 class AddCommentPost(CreateView):
     model = Comment
-    template_name = 'add_comment.html'
+    template_name = 'detailpost.html'
     fields = ('name', 'body')
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
-        messages.success(self.request, 'Comment Added')
+        messages.success(self.request, 'Thêm bình luận thành công')
         return super().form_valid(form)
 
     def get_success_url(self):

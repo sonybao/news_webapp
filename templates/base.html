@@ -119,7 +119,7 @@
                                                    data-toggle="dropdown">
                                                 <span class="user-img">
                                                     {% if user.profile.avatar %}
-                                                    <img class="rounded-circle" src="{{ user.profile.avatar.url }}" width="40" height="40">
+                                                    <img class="rounded-circle" src="{{ user.profile.avatar.url }}"  >
                                                     {% else %}
                                                     <img class="rounded-circle" src="https://www.vippng.com/png/full/385-3856307_png-file-svg-user-icon.png" width="40" height="40">
                                                 {% endif %}
@@ -187,6 +187,7 @@
 <div class="container mainnew mt-10 mb-5">
     {% block content %}{% endblock %}
 </div>
+
 
 <section class="footer" id="link">
     <div class="container mt-5">
