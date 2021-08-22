@@ -18,26 +18,29 @@ def login_register(request):
         if 'signup' in request.POST:
             if register_form.is_valid():
                 register_form.save()
-                username = register_form.cleaned_data.get('username')
-                messages.success(request, f'Tài khoản {username} tạo thành công ')
+                messages.success(request, f'Tạo tài khoản thành công !')
                 new_user = authenticate(username=register_form.cleaned_data['username'],
-                                        password=register_form.cleaned_data['password1'],
-                                        )
+                                        password=register_form.cleaned_data['password1'], )
                 login(request, new_user)
-                if request.user.is_authenticated:
-                    messages.success(request, 'Đăng nhập thành công')
+                return redirect("login")
+            else:
+                email = register_form.cleaned_data.get('email')
+                password1 = register_form.cleaned_data.get('password1')
+                password2 = register_form.cleaned_data.get('password2')
+                if password1 == password2:
+                    messages.error(request, f'Tên tài khoản đã tồn tại')
+                    return redirect('login')
                 else:
-                    messages.error(request, 'Tên tài khoản đã tồn tại')
-            return redirect('login')
+                    messages.error(request, "Mật khẩu xác thực không khớp")
+                    return redirect('login')
         elif 'login' in request.POST:
             log_view = views.LoginView.as_view(template_name='login.html')
             log_view(request)
             if request.user.is_authenticated:
                 messages.success(request, 'Đăng nhập thành công')
             else:
-                messages.error(request,'Tài khoản không tồn tại')
+                messages.error(request, 'Tài khoản không tồn tại')
             return redirect('login')
-
     else:
         if request.user.is_authenticated:
             return redirect('profile')
