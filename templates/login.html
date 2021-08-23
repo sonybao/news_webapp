@@ -26,7 +26,15 @@
                 <form method="post" onsubmit="return confirm('Are you sure ?')">
                     <div class="modal-body">
                         {% csrf_token %}
-                        {{ register_form }}
+                        <input type="hidden" name="signup" value="True"/>
+                        <label>Tên tài khoản: </label>{{ register_form.username }}
+                        <label>Email: </label>{{ register_form.email }}
+                        <label>Họ: </label>{{ register_form.first_name }}
+                        <label>Tên: </label>{{ register_form.last_name }}
+                        <label>Nhập mật khẩu: </label><span id='message1'></span>
+                        <input type="password" name="password1" class="form-control" required id="id_password1" onkeyup='check()'/>
+                        <label>Xác nhận mật khẩu: </label><span id='message2'></span>
+                        <input style="position: relative" type="password" name="password2" class="form-control" required id="id_password2" onkeyup='check()'>
                         <input type="hidden" name="signup" value="True"/>
                     </div>
                     <div class="modal-footer">
