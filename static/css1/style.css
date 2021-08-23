@@ -936,9 +936,30 @@ textarea{
     padding: 10px;
     text-align: justify;
 }
+.phancmt{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
 .phancmt h5{
     margin: 0px;
     margin-top: 15px;
+    
+}
+.phancmt > .deleteee{
+    margin: 0px;
+    margin-top: 15px;
+    text-align: right;
+    
+}
+.deleteee button{
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+}
+.deleteee button i{
+    font-size: 20px;
 }
 .hrrr{
     width: 100%;

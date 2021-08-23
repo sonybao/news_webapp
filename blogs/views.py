@@ -4,6 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse
 
 from NEWS_WEBAPP.forms import CommentForm, CustomPostForm
 from blogs.models import Post, Comment
@@ -73,6 +74,9 @@ class DeletePost(DeleteView):
     model = Post
     template_name = 'detail_post.html'
     success_url = reverse_lazy('home')
+    def get_success_url(self):
+        messages.success(self.request, "Xóa bài thành công")
+        return reverse('home')
 
 
 class AddCommentPost(CreateView):
@@ -82,6 +86,7 @@ class AddCommentPost(CreateView):
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
+        form.instance.author = self.request.user
         messages.success(self.request, 'Thêm bình luận thành công')
         return super().form_valid(form)
 
@@ -96,3 +101,12 @@ def search_bar(request):
         return render(request, 'search.html', {'searched': searched,'search_content':search_content})
     else:
         return render(request, 'search.html', {})
+
+class DeleteComment(SuccessMessageMixin, DeleteView):
+    model = Comment
+    template_name = "detail_post.html"
+    fields = ('author', 'name', 'body')
+
+    def get_success_url(self):
+        messages.success(self.request,"Xóa bình luận thành công")
+        return reverse('detailpost', kwargs={'pk': self.object.post.pk})

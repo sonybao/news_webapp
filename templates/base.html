@@ -29,8 +29,9 @@
         <link href="{% static 'css1/style.css' %}" rel="stylesheet">
         <link href="{% static 'css1/responsive.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
-    <title>{% block title %}Trang chủ{% endblock %}</title>
+    <title>{% block title %}News website application{% endblock %}</title>
 </head>
 <script>
     var m = document.getElementsByClassName("alert");  // Return an array
@@ -39,7 +40,24 @@
         if (m && m.length) {
             m[0].classList.add('hide');
         }
-    }, 3000);</script>
+    }, 3000);
+    function check() {
+		if (document.getElementById('id_password1').value == document
+				.getElementById('id_password2').value) {
+			document.getElementById('message1').style.cssText = "color: green; font-weight: bold; font-size: 13px; padding-left: 76px"
+			document.getElementById('message2').style.cssText = "color: green; font-weight: bold; font-size: 13px; padding-left: 50px"
+			document.getElementById('message1').innerHTML = "Mật khẩu trùng khớp ";
+			document.getElementById('message2').innerHTML = "Mật khẩu trùng khớp ";
+		} else {
+			document.getElementById('message1').style.cssText = "color: red; font-weight: bold; font-size: 13px; padding-left: 76px"
+			document.getElementById('message2').style.cssText = "color: red; font-weight: bold; font-size: 13px; padding-left: 50px"
+			document.getElementById('message1').innerHTML = "Mật khẩu không khớp";
+			document.getElementById('message2').innerHTML = "Mật khẩu không khớp";
+		}
+	}
+
+
+</script>
 
 <body data-spy="scroll" data-target="#bs-example-navbar-collapse-1">
 

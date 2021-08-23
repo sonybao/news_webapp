@@ -100,7 +100,7 @@
 
 
 
-
+                
 
 
 
@@ -121,10 +121,32 @@
                 {% for cmt in post.comments.all %}
                 <div class="phancmt">
                   <h5>{{ cmt.name }} <small> - {{ cmt.date_added }}</small></h5>
+                  <div class="deleteee">
+                      {% if cmt.author.id == user.id %}
+                      <form method="post" enctype="multipart/form-data" action="{% url 'delcomment' cmt.pk %}" onsubmit="return confirm('Are you sure ?');">
+                      {% csrf_token %}
+                      
+
+                      
+                          <button type="submit"><i class="fa fa-trash"></i></button>
+                       
+
+
+
+
+                      </form>
+                      {% else %}
+                      
+                      {% endif %}
+                  </div>
+                  
                   <p style="font-size: 15px">{{ cmt.body }}</p>
                 </div>
                 
                 
+                  
+
+
                 {% endfor %}
                 {% endif %}
               </div>

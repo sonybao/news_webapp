@@ -71,7 +71,7 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('name', 'body')
+        fields = ('author', 'name', 'body' )
 
 
 class CustomPostForm(forms.ModelForm):
